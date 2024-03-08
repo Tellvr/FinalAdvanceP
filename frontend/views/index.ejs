@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>neWs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #d2daff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center; 
+            width: 80%; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .result-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        button[type="submit"] {
+        background-color: #333;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 15px; 
+    }
+
+    button[type="submit"]:hover {
+        background-color: #555;
+    }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 2px solid #aaa;
+            background-color: transparent;
+            transition: border-bottom-color 0.3s ease;
+        }
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <div class="header-main bg-light-pink"> 
+            <div class="container">
+                <div class="col-md-auto">
+                    <nav class="navbar navbar-expand-lg navbar-light w-100" id="header-navbar">
+                        <a class="navbar-brand font-weight-bold" href="/index">HOME</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                 <li class="nav-item">
+                                    <a class="nav-link text-uppercase" href="/mycourses">My Courses</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase" href="/profile">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section>
+        <div class="container mt-4">
+            <section>
+                <div class="container mt-4">
+                    <form action="/index" method="GET">
+                        <div class="form-group">
+                            <label for="page">Page:</label>
+                            <input type="number" class="form-control" id="page" name="page" value="1" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="sortBy">Sort By:</label>
+                            <select class="form-control" id="sortBy" name="sort_by">
+                                <option value="name">Name</option>
+                                <option value="duration">Duration</option>
+                                <option value="price">Price</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order">Order:</label>
+                            <select class="form-control" id="order" name="order">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Apply Filter</button>
+                    </form>
+                </div>
+            </section>
+
+            <div class="row">
+                <% courses.forEach(course => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="<%= course.image %>" class="card-img-top" alt="<%= course.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= course.name %></h5>
+                            <p class="card-text">Instructor: <%= course.instructor %></p>
+                            <p class="card-text">Description: <%= course.description %></p>
+                            <p class="card-text">Price: <%= course.price %></p>
+                        </div>
+                        <a href="/courses/<%= course.ID %>" class="btn btn-primary">More information</a>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+
+          
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

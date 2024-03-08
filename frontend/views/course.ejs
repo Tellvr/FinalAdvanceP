@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #d2daff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center; 
+            width: 80%; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .result-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        button[type="submit"] {
+        background-color: #333;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 15px; 
+    }
+
+    button[type="submit"]:hover {
+        background-color: #555;
+    }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 2px solid #aaa;
+            background-color: transparent;
+            transition: border-bottom-color 0.3s ease;
+        }
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <div class="header-main bg-light-pink"> 
+            <div class="container">
+                <div class="col-md-auto">
+                    <nav class="navbar navbar-expand-lg navbar-light w-100" id="header-navbar">
+                        <a class="navbar-brand font-weight-bold" href="/index">HOME</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                 <li class="nav-item">
+                                    <a class="nav-link text-uppercase" href="/mycourses">My Courses</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase" href="/profile">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <div class="container">
+        <h1>Course Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><%= course.name %></h5>
+                <p class="card-text">Description: <%= course.description %></p>
+                <p class="card-text">Duration: <%= course.duration %></p>
+                <p class="card-text">Price: <%= course.price %></p>
+                <p class="card-text">Places: <%= course.places %></p>
+                <p class="card-text">Category: <%= course.category %></p>
+            </div>
+            <a href="/enroll/<%= course.ID %>" class="btn btn-primary">enroll</a>
+        </div>
+    </div>
+</body>
+</html>
